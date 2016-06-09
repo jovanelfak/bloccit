@@ -8,4 +8,6 @@ class WelcomeController < ApplicationController
   	<h1>Welcome#about</h1>
 	<p>Find me in app/views/welcome/about.html.erb</p>
   end
+  def contact
+  end
 end
