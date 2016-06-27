@@ -4,8 +4,6 @@ resources :posts
 
 get 'about' => 'welcome#about'
 
-
-=======
   get 'welcome/index'
 
   get 'welcome/about'
@@ -13,7 +11,7 @@ get 'about' => 'welcome#about'
   get 'welcome/faq'
 
   root 'welcome#index'
->>>>>>> 29_assingment_object
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
