@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 resources :posts
 
 get 'about' => 'welcome#about'
