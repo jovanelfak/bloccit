@@ -1,4 +1,3 @@
-include RandomData
 require 'random_data'
 
 50.times do
