@@ -1,5 +1,4 @@
-<%= form_for @post do |f| %>
-   <%= f.label :title %>
+<%= form_for [@topic, @post] do |f| %>   <%= f.label :title %>
    <%= f.text_field :title %>
  
    <%= f.label :body %>
