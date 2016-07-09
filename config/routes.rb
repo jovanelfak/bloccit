@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'sponsored_posts/show'
+
+  get 'sponsored_posts/new'
+
+  get 'sponsored_posts/edit'
+
 resources :questions
 
 resources :advertisements
@@ -7,16 +13,18 @@ resources :topics do
  # #34
      resources :posts, except: [:index]
    end
+resources :sponsored_posts, only: [:show, :new, :edit]
 
+   
    resources :users, only: [:new, :create]
 
 get 'about' => 'welcome#about'
 
  
 
-  get 'welcome/faq'
+get 'welcome/faq'
 
-  root 'welcome#index'
+root 'welcome#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -25,6 +25,14 @@ posts = Post.all
 		body: RandomData.random_paragraph
 		)
 end
+sponsored_posts = SponsoredPost.all
+100.times do
+	SponsoredPost.create!(
+		title: RandomData.random_sentence,
+		body: RandomData.random_paragraph,
+		price: rand(10..100)
+		)
+
 100.times do
 	Question.create!(
 		title: RandomData.random_sentence,
