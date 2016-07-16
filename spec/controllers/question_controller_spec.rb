@@ -5,7 +5,7 @@ RSpec.describe QuestionController, type: :controller do
 
   let (:my_question) do
     Question.create(
-      di: 1,
+      id: 1,
       title: RandomData.random_sentence,
       body: RandomData.random_paragraph,
       resolved: false
