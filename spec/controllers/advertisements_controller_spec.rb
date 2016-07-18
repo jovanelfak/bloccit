@@ -1,6 +1,6 @@
 require 'rails_helper'
 include RandomData
-RSpec.describe AdvertisementController, type: :controller do
+RSpec.describe AdvertisementsController, type: :controller do
 
   let(:my_ad) do
     Advertisement.create(
@@ -49,6 +49,7 @@ RSpec.describe AdvertisementController, type: :controller do
       expect(assigns(:advertisement)).not_to be_nil
     end
   end
+  
   describe "POST create" do
     it "increments the number of advertisements by 1" do
       expect{post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: 99}}.to change(Advertisement,:count).by(1)

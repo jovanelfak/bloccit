@@ -1,4 +1,4 @@
-class AdvertisementController < ApplicationController
+class AdvertisementsController < ApplicationController
   def index
   	@advertisements = Advertisement.all
   end
@@ -14,7 +14,7 @@ class AdvertisementController < ApplicationController
   def create
   	@advertisement = Advertisement.new
   	@advertisement.title = params[:advertisement][:title]
-  	@advertisement.copy = params[advertisement][:copy]
+  	@advertisement.copy = params[:advertisement][:copy]
   	@advertisement.price = params[:advertisement][:price]
   	
   	if @advertisement.save
