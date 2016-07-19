@@ -13,12 +13,12 @@ RSpec.describe QuestionsController, type: :controller do
   describe "GET #index" do
     it "returns http success" do
       get :index
-      expect(response).to Have_http_status(:success)
+      expect(response).to have_http_status(:success)
     end
 
     it "assings my_question to @question" do
       get :index
-      expect(assigns(:questions)).to qe([my_question])
+      expect(assigns(:questions)).to eq([my_question])
     end
   end
   describe "GET #index" do
