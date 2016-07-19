@@ -53,7 +53,7 @@ RSpec.describe QuestionsController, type: :controller do
   describe "GET new" do
     it "returns http success" do
       get :new
-      expect(response).to have_http_status(:status)
+      expect(response).to have_http_status(:success)
     end
 
     it "render the #new view" do
@@ -116,8 +116,8 @@ describe "PUT update" do
   end
   describe "DELETE destroy" do
     it "deletes the question" do
-      delete :destroy, {id: my_question.id}.size
-      expect(count).to eq 0
+      delete :destroy, {id: my_question.id}
+      expect(Question.count).to eq 0
     end
 
     it "redirects to question index" do
