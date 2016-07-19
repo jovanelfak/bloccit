@@ -1,26 +1,24 @@
 require 'rails_helper'
 include RandomData
 
-RSpec.describe QuestionController, type: :controller do
+RSpec.describe QuestionsController, type: :controller do
 
   let (:my_question) do
     Question.create(
-      di: 1,
       title: RandomData.random_sentence,
-      body: RandomData.random_paragraph,
-      resolved: false
+      body: RandomData.random_paragraph
       )
   end
 
   describe "GET #index" do
     it "returns http success" do
       get :index
-      expect(response).to Have_http_status(:success)
+      expect(response).to have_http_status(:success)
     end
 
     it "assings my_question to @question" do
       get :index
-      expect(assigns(:questions)).to qe([my_question])
+      expect(assigns(:questions)).to eq([my_question])
     end
   end
   describe "GET #index" do
@@ -55,7 +53,7 @@ RSpec.describe QuestionController, type: :controller do
   describe "GET new" do
     it "returns http success" do
       get :new
-      expect(response).to have_http_status(:status)
+      expect(response).to have_http_status(:success)
     end
 
     it "render the #new view" do
@@ -95,22 +93,20 @@ end
 
 describe "PUT update" do
   it "updates questions with expected attributes" do
-    new_title = RandomData.random_sentence
-    new_body = RandomData.random_paragraph
+    new_title = "An updated title"
+    new_body = "An updated body"
   
     put :update, id: my_question.id, question: { title: new_title, body: new_body, resolved: false}
-    
 
-
-    updated_questions = assigns(:question)
+    updated_question = assigns(:question)
     expect(updated_question.id).to eq my_question.id
     expect(updated_question.title).to eq new_title
     expect(updated_question.body).to eq new_body
   end
 
     it "redirects to the updated question" do
-      new_title = RandomData.random_sentence
-      new_body = RandomData.random_paragraph
+      new_title = "An updated title"
+      new_body = "An updated body"
 
       put :update, id: my_question.id, question: { title: new_title, body: new_body, resolved: true}
       expect(response).to redirect_to my_question
@@ -118,13 +114,13 @@ describe "PUT update" do
   end
   describe "DELETE destroy" do
     it "deletes the question" do
-      delete :destroy, {id: my_question.id}.size
-      expect(count).to eq 0
+      delete :destroy, {id: my_question.id}
+      expect(Question.count).to eq 0
     end
 
     it "redirects to question index" do
       delete :destroy, {id: my_question.id}
-      expect(response).to redirects_to questions_path
+      expect(response).to redirect_to questions_path
     end
   end
 end

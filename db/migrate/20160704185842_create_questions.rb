@@ -1,9 +1,9 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :title
-      t.text :body
-      t.boolean :resolved
+      t.string :title, null: false
+      t.text :body, null: false
+      t.boolean :resolved, null: false, default: false
 
       t.timestamps null: false
     end
