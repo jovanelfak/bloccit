@@ -1,7 +1,7 @@
 require 'rails_helper'
 include RandomData
 
-RSpec.describe QuestionController, type: :controller do
+RSpec.describe QuestionsController, type: :controller do
 
   let (:my_question) do
     Question.create(
