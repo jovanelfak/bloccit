@@ -5,8 +5,8 @@ resources :advertisements
 
 resources :topics do
  # #34
-     resources :posts, except: [:index]
-   end
+resources :posts, except: [:index]
+end
 
 get 'about' => 'welcome#about'
 
