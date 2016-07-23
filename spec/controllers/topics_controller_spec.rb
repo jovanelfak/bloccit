@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
-	let(:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
+  let(:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
  # #13
    let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
@@ -41,17 +41,18 @@ RSpec.describe TopicsController, type: :controller do
 
    describe "POST create" do
      it "increases the number of topics by 1" do
-       expect{ post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}}.to change(Topic,:count).by(1)
+       expect{post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Post,:count).by(1)
      end
    
      it "assigns Topic.last to @topic" do
-       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
+       post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
        expect(assigns(:topic)).to eq Topic.last
      end
  
      it "redirects to the new topic" do
-       post :create, {topic: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}
-       expect(response).to redirect_to Topic.last
+      post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+ # #24
+       expect(response).to redirect_to [my_topic, Post.last]
      end
    end
 
