@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe WelcomeController, type: :controller do
+RSpec.describe WelcomesController, type: :controller do
 	describe "GET index" do
      it "renders the index template" do
  # #2
