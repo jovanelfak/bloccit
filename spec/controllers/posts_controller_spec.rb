@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'random_data'
-RSpec.describe PostsController, type: :controller do
+require 'random_data' 
+ # #6
+ RSpec.describe PostsController, type: :controller do
   let(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
-
 
  describe "GET new" do
       it "returns http success" do
@@ -39,6 +39,7 @@ RSpec.describe PostsController, type: :controller do
  # #24
         expect(response).to redirect_to [my_topic, Post.last]      end
     end
+
 
   describe "GET edit" do
      it "returns http success" do
@@ -103,3 +104,4 @@ RSpec.describe PostsController, type: :controller do
    end
  end
 end
+
