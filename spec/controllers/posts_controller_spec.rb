@@ -1,7 +1,8 @@
 require 'rails_helper'
-require 'random_data' 
+
  # #6
  RSpec.describe PostsController, type: :controller do
+
   let(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
  describe "GET new" do
@@ -42,10 +43,12 @@ require 'random_data'
 
 
   describe "GET edit" do
+
      it "returns http success" do
        get :edit, topic_id: my_topic.id, id: my_post.id
        expect(response).to have_http_status(:success)
      end
+
  
      it "renders the #edit view" do
        get :edit, topic_id: my_topic.id, id: my_post.id
@@ -62,6 +65,7 @@ require 'random_data'
        expect(post_instance.id).to eq my_post.id
        expect(post_instance.title).to eq my_post.title
        expect(post_instance.body).to eq my_post.body
+
      end
    end
    describe "PUT update" do
@@ -104,4 +108,3 @@ require 'random_data'
    end
  end
 end
-
