@@ -1,4 +1,5 @@
 require 'random_data'
+
  # Create Posts
  50.times do
  # #1
@@ -23,3 +24,4 @@ require 'random_data'
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+
