@@ -10,6 +10,7 @@ require 'random_data'
 
 
 
+
 50.times do
 	Post.create!(
 		topic: topics.sample,
@@ -30,4 +31,5 @@ puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
 
