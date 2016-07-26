@@ -48,7 +48,7 @@ RSpec.describe PostsController, type: :controller do
      describe "POST create" do
 
        it "increases the number of Post by 1" do
-         expect{post :create, topic_id: my_topic.id, post: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}.to change(Post,:count).by(1)
+         expect{post :create, topic_id: my_topic.id, post: {name: RandomData.random_sentence, description: RandomData.random_paragraph}}.to change(Post, :count).by(1)
         end
 
        it "assigns Post.last to @post" do
