@@ -1,20 +1,19 @@
 <%= form_for @topic do |f| %>
-      <% if topic.errors.any? %>
-
-  <div class="alert alert-danger">
-    <h4> <% pluralize(topic.errors.count, "error") %> </h4>
+  <% if topic.errors.any? %>
+    <div class="alert alert-danger">
+    <h4>There are <%= pluralize(topic.errors.count, "error") %>,</h4>
     <ul>
-      <% topic.errors.full_messages.each do |msg| %>
-      <li> <%= msg %>. </li>
-      <% end %>
+    <% topic.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
     </ul>
-  </div>
-  <% end %>
+    </div>
+    <% end %>
 
 
 
 
-       <%= form_group_tag(topic.errors[:name]) do %>
+
+      <%= form_group_tag(topic.errors[:name]) do %>
          <%= f.label :name %>
          <%= f.text_field :name, class: 'form-control', placeholder: "Enter topic name" %>
        <% end %>
