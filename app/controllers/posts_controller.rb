@@ -17,13 +17,13 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post.topic = @topic
 
-      if @post.save
-        flash[:notice] = "Post was saved."
-        redirect_to [@topic, @post]
-      else
-        flash[:error] = "There was an error saving the post. Please try again."
-        render :new
-      end
+    if @post.save
+      flash[:notice] = "Post was saved."
+      redirect_to [@topic, @post]
+    else
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :new
+    end
   end
 
   def edit
