@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-get 'about' => 'welcome#about'
-
-root 'welcome#index'
+get 'about', to: 'welcomes#about'
+get 'about', to: 'welcomes#index'
 
   resources :topics do
     resources :posts, except: [:index]
