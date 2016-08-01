@@ -14,14 +14,14 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new
-    @topic.name = params[:topic][:name]
+    @topic.name = params[:topic][:description]
     @topic.description = params[:topic][:description]
     @topic.public = params[:topic][:public]
 
     if @topic.save
       redirect_to @topic, notice: "Topic was saved successfully."
     else
-      flash[:error] = "Error creating topic. Please try again."
+      flash.now[:alert] = "Error creating topic. Please try again."
       render :new
     end
   end
@@ -38,10 +38,10 @@ class TopicsController < ApplicationController
     @topic.public = params[:topic][:public]
 
     if @topic.save
-      flash[:notice] = "Topic was updated."
+      flash[:notice] = "Topic was updated"
       redirect_to @topic
     else
-      flash[:error] = "Error saving topic. Please try again."
+      flash.now[:alert] = "Error saving topic. Please try again"
       render :edit
     end
   end
@@ -53,8 +53,9 @@ class TopicsController < ApplicationController
       flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
       redirect_to action: :index
     else
-      flash[:error] = "There was an error deleting the topic."
+      flash.now[:alert] = "There was an error deleting the topic."
       render :show
     end
   end
+
 end
