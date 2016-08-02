@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_action :require_sign_in, except: :show
 
   def show
     @post = Post.find(params[:id])
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.title = params[:post][:title]
     @post.body = params[:post][:body]
+    @post.user = current_user
     @topic = Topic.find(params[:topic_id])
     @post.topic = @topic
 
@@ -53,13 +55,6 @@ class PostsController < ApplicationController
     else
       flash[:error] = "There was an error deleting the post."
       render :show
-    end
-  end
-  private
-   def require_sign_in
-     unless current_user
-       flash[:alert] = "You must be logged in to do that"
-       redirect_to new_session_path
     end
   end
 end
