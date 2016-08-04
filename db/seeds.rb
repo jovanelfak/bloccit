@@ -2,7 +2,6 @@ require 'random_data'
 
  5.times do
    User.create!(
- # #3
    name:     RandomData.random_name,
    email:    RandomData.random_email,
    password: RandomData.random_sentence
@@ -11,7 +10,7 @@ require 'random_data'
  users = User.all
  user = User.first
  user.update_attributes!(
-   email: 'youremail.com', # replace this with your personal email
+   email: 'admin@example.com', # replace this with your personal email
    password: 'helloworld'
  )
 
