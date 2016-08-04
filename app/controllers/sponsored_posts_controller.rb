@@ -29,6 +29,7 @@ class SponsoredPostsController < ApplicationController
 
   def edit
     @sponsored_post = SponsoredPost.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
   end
 
   def update
