@@ -1,26 +1,69 @@
 <div class="row">
-   <div class="col-md-8">
-     <div class="media">
-       <br />
-       <% avatar_url = @user.avatar_url(128) %>
-       <% if avatar_url %>
-         <div class="media-left">
-           <%= image_tag avatar_url, class: 'media-object' %>
-         </div>
-       <% end %>
-       <div class="media-body">
-         <h2 class="media-heading"><%= @user.name %></h2>
-         <small>
-           <%= pluralize(@user.posts.count, 'post') %>,
-           <%= pluralize(@user.comments.count, 'comment') %>
-         </small>
-       </div>
-     </div>
-   </div>
- </div>
- 
- <h2>Posts</h2>
- <%= render @user.posts %>
- 
- <h2>Comments</h2>
- <%= render @user.comments %>
+  <div class="col-md-8">
+    <div class="media">
+      <br />
+      <% avatar_url = User.avatar_url(@user, 128) %>
+      <% unless avatar_url.nil? %>
+        <div class="media-left">
+          <%= image_tag avatar_url, class: 'media-object' %>
+        </div>
+      <% end %>
+      <div class="media-body">
+        <h2 class="media-heading"><%= @user.name %></h2>
+
+
+        <small>
+        <% if user_has_posts?(@user) %>
+          <%= @user.name %> has <%= pluralize(@user.posts.count, 'post') %> and
+        <% else %>
+          <%= @user.name %> does not yet have any posts.
+        <% end %>
+        <br>
+
+        <% if user_has_comments?(@user) %>
+           has <%= pluralize(@user.comments.count, 'comment') %>
+        <% else %>
+          <%= @user.name %> does not yet have any comments.
+        <% end %>
+        </small>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if user_has_posts?(@user) %>
+  <h2>Posts</h2>
+  <%= render @user.posts %>
+<% end %>
+
+<% if user_has_comments?(@user) %>
+  <h2>Comments</h2>
+  <%= render @user.comments %>
+<% end %>
+
+<% if user_has_favorites?(@user) %>
+<h2> Favorite Posts </h2>
+<% @user.favorites.each do |favorite| %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <br />
+      <% avatar_url = User.avatar_url(@user, 64) %>
+      <% unless avatar_url.nil? %>
+        <div class="media-left">
+          <%= image_tag avatar_url, class: 'media-object' %>
+        </div>
+      <% end %>
+      <div class="media-body">
+        <h3 class="media-heading"> <%= render partial: 'posts/post', locals: { post: favorite.post } %> </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<% end %>
+<% end %>
