@@ -8,8 +8,6 @@ RSpec.describe Topic, type: :model do
   it { should have_many(:labelings) }
   it { should have_many(:labels).through(:labelings) }
 
-
-
   describe "attributes" do
     it "should respond to name" do
       expect(topic).to respond_to(:name)
@@ -35,6 +33,7 @@ RSpec.describe Topic, type: :model do
     end
 
     describe "visible_to(user)" do
+
       it "returns all topics if the user is present" do
         user = User.new
         expect(Topic.visible_to(user)).to eq(Topic.all)
@@ -42,6 +41,19 @@ RSpec.describe Topic, type: :model do
 
       it "returns only public topics if user is nil" do
         expect(Topic.visible_to(nil)).to eq([@public_topic])
+      end
+    end
+
+    describe "publicly_viewable" do
+
+      it "returns a collection of public posts" do
+        expect(Topic.publicly_viewable).to eq(Topic.where(public: true))
+      end
+    end
+
+    describe "privately_viewable" do
+      it "returns a collection of private posts" do
+        expect(Topic.privately_viewable).to eq(Topic.where(public: false))
       end
     end
   end
