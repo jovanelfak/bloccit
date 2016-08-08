@@ -19,6 +19,7 @@
    gem 'rspec-rails', '~> 3.0'
    gem 'shoulda'
    gem 'pry-byebug'
+   gem 'factory_girl_rails', '~> 4.0'
  end
  
  # Use SCSS for stylesheets
