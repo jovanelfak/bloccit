@@ -36,8 +36,16 @@ include RandomData
 
   100.times do
     Comment.create!(
+    post: posts.sample,
     user: users.sample,
-      post: posts.sample,
+      body:  RandomData.random_paragraph
+    )
+  end
+  
+  100.times do
+    Comment.create!(
+    topic: topics.sample,
+    user: users.sample,
       body:  RandomData.random_paragraph
     )
   end
