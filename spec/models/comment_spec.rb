@@ -6,7 +6,7 @@ RSpec.describe Comment, type: :model do
 	let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld")}
 	let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
 	let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user) }	
-	let(:comment) { Comment.create!(body: 'Comment Body', post: post, user: user) }
+	let(:comment) { Comment.create!(body: 'Comment Body That is at least 20 characters long.', post: post, user: user) }
  
      it { is_expected.to belong_to(:post) }
      it { is_expected.to belong_to(:user) }
