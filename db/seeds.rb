@@ -10,6 +10,7 @@ include RandomData
     )
   end
   users = User.all
+  puts "#{User.count} users created."
 # Create topics
   15.times do
     Topic.create!(
@@ -18,7 +19,7 @@ include RandomData
     )
   end
   topics = Topic.all
-
+  puts "#{User.count} users created."
 
 # Create posts
   50.times do
@@ -31,6 +32,7 @@ include RandomData
     )
   end
   posts = Post.all
+  puts "#{Post.count} posts created."
 
   #Create comments
 
@@ -41,14 +43,7 @@ include RandomData
       body:  RandomData.random_paragraph
     )
   end
-  
-  100.times do
-    Comment.create!(
-    topic: topics.sample,
-    user: users.sample,
-      body:  RandomData.random_paragraph
-    )
-  end
+ 
 
   # Create an admin user
   admin = User.create!(
@@ -66,7 +61,4 @@ include RandomData
   )
 
 puts "Seed finished"
-puts "#{User.count} users created."
-puts "#{Topic.count} topics created."
-puts "#{Post.count} posts created."
 puts "#{Comment.count} comments created."
