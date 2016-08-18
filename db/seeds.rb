@@ -9,6 +9,22 @@ include RandomData
       password: RandomData.random_sentence
     )
   end
+  
+  # Create an admin user
+  admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+  )
+
+  #Create a member
+  member = User.create!(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld'
+  )
+
   users = User.all
 # Create topics
   15.times do
@@ -41,21 +57,16 @@ include RandomData
       body:  RandomData.random_paragraph
     )
   end
+  
+    100.times do
+    Comment.create!(
+    user: users.sample,
+      topic: topics.sample,
+      body:  RandomData.random_paragraph
+    )
+  end
 
-  # Create an admin user
-  admin = User.create!(
-  name:     'Admin User',
-  email:    'admin@example.com',
-  password: 'helloworld',
-  role:     'admin'
-  )
 
-  #Create a member
-  member = User.create!(
-  name:     'Member User',
-  email:    'member@example.com',
-  password: 'helloworld'
-  )
 
 puts "Seed finished"
 puts "#{User.count} users created."
